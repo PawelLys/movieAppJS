@@ -1,0 +1,975 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; 
+  scroll-behavior: smooth;
+}
+
+/* for scrolling offset */
+.shop, .movie-app, .react-title { position: relative; }
+#scroll__shop, #scroll__movie, #scroll__intro { position: absolute; top: -5rem; left: 0; }
+  @media only screen and (max-width: 68.75em) {
+    html {
+      font-size: 52%; } 
+    }
+
+  @media only screen and (max-width: 40em) {
+    html {
+      font-size: 46%; } 
+    } 
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  min-height: calc(100vh - 2 * 4vw); 
+}
+
+header {
+  height: 100vh;
+  min-height: 65rem;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("img/background.png");
+  background-size: cover;
+  }
+  .header__nav {
+    padding: 2rem 6rem;
+    display: flex;
+    align-items: center;
+  }
+    .header__nav__img {
+      height: 4rem;
+      border-radius: 2rem;
+      filter: opacity(.7) drop-shadow(0 0 0 rgb(255, 255, 255));
+    }
+    .header__nav ul {
+      flex: 1;
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+    }
+      .header__nav ul li {
+        margin-right: 3rem;
+        font-size: 2rem;
+      }
+        .header__nav ul li a:link,
+        .header__nav ul li a:visited { 
+          text-decoration: none;
+          color: rgb(230, 230, 230);
+          transition: border-bottom 0.3s, color 0.3s;
+          border-bottom: 0.1rem solid transparent;
+          padding-bottom: 0.8rem;
+        }
+        .header__nav ul li a:hover,
+        .header__nav ul li a:active {
+          border-bottom: 0.1rem solid rgb(190, 190, 190);
+          color: rgb(190, 190, 190);
+        }
+  .sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 2px #efefef;
+    z-index: 9999;
+    padding: 1rem 6rem;
+  }
+    .sticky .header__nav__img {
+      height: 3.5rem;
+      filter: opacity(.99) drop-shadow(0 0 0 rgb(0, 0, 0));
+    }
+    .sticky ul { margin-right: 10rem; }
+      .sticky ul li a:link,
+      .sticky ul li a:visited { color: rgb(85, 85, 85); }
+      .sticky ul li a:hover,
+      .sticky ul li a:active { color: rgb(182, 180, 180); }
+h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  word-spacing: 0.4rem;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+  .header__main {
+    transform: translateY(70%);
+    width: 90%;
+    height: 30%;
+  }
+    .header__main__btn {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      margin: 4% 30% 0 20%;
+      font-size: 1.9rem;
+    }
+      .header__main__btn-start,
+      .header__main__btn-last {  
+        padding: 1rem 2rem;
+        width: 10rem;
+        border-radius: 20rem;
+        font-weight: 700;
+        text-decoration: none;
+        scroll-behavior: auto;
+      }
+        .header__main__btn-start:link, 
+        .header__main__btn-start:visited {
+          background-color: rgb(255, 196, 0);
+          color: rgb(255, 255, 255);
+          transition: background-color 0.2s, color 0.2s, transform 0.2s;
+        }
+        .header__main__btn-start:hover, 
+        .header__main__btn-start:active {
+          transform: scale(1.04);
+          background-color: rgb(255, 230, 147);
+          color: rgb(97, 97, 97);
+        }
+
+      .header__main__btn-last {
+        background-color: none;
+        border: 0.1rem solid rgb(255, 230, 147);
+        color: rgb(255, 230, 147);
+      }
+        .header__main__btn-last:link, 
+        .header__main__btn-last:visited {
+          background-color: none;
+          border: 0.1rem solid rgb(255, 230, 147);
+          color: rgb(255, 230, 147);
+          transition: background-color 0.2s, color 0.2s, transform 0.2s;
+        }
+        .header__main__btn-last:hover, 
+        .header__main__btn-last:active {
+          transform: scale(1.04);
+          background-color: rgb(255, 196, 0);
+          color: rgb(255, 255, 255);
+        }
+
+/***********************/
+/**    Movie intro     **/
+/***********************/
+
+.movie-intro {
+  height: 100vh;
+  min-height: 65rem;
+  background-color: #fff; 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+  .intro-title {
+    grid-column: 1/4;
+    align-self: center;
+    margin-top: 3.25rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+  }
+    .intro-title h2 { 
+      grid-column: 1/4; 
+      width: 40vw;
+      text-align: center;
+    }
+      .intro-title .border { 
+        grid-column: 2/3;
+        border-bottom: 0.2rem solid rgb(223, 190, 4);
+      }
+
+  .intro-description {
+    font-size: 1.7rem;
+    font-weight: 300;
+    text-align: center;
+    margin: 0 3vw;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+  }
+    .intro-description ion-icon {
+      align-self: center;
+      font-size: 3rem;
+      color: rgb(165, 130, 14);
+    }
+
+h2 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  color: rgba(0, 0, 0, 0.685);
+}
+
+/***********************/
+/**    Movie app      **/
+/***********************/
+
+.movie-app {
+  height: auto;
+  min-height: 65.7rem;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("img/movie.jpg"); 
+  background-size: cover;
+  background-attachment: fixed;
+}
+  .movie-header {
+    font-size: 1.5rem;
+    display: grid;
+    grid-template-columns: 4fr 3fr 1.5fr 2.7fr 2.5fr 1fr .5fr;
+    align-items: center;
+    grid-auto-rows: minmax(11.7rem, auto);
+  }
+    .title__search { justify-self: end; }
+    .year__search { justify-self: center; }
+      .search-field {
+        font-size: 1.6rem;
+        border-radius: 5rem;
+        padding-left: 2rem;
+        height: 20%;
+        width: 60%;
+        transition: all .3s;
+      }
+        .search-field:focus {
+          transform: translateY(-2px);
+          box-shadow: 0.5rem 0.5rem 2.5rem #fff;
+          font-size: 1.7rem;
+          outline: none; 
+        }
+        .search-field::placeholder { color: rgb(192, 175, 168); }
+        
+    .plot-container {
+      justify-self: center;
+      width: 60%;
+      height: 100%;
+      margin-bottom: 15%;
+      font-size: 1.6rem;
+      color: rgb(206, 206, 206);
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+      .plot__search {
+        height: 20%;
+        padding-left: 0.7rem;
+        margin-top: 5%;
+        font-size: 1.3rem;
+        border-radius: 3rem;
+        border: none;
+        color: rgba(0, 0, 0, 0.527);
+        outline: none;
+      }
+
+    .btn-movie {
+      justify-self: center;
+      width: 40%;
+      padding-right: 0.4rem; 
+      font-size: 1.3rem;
+      height: 23%;
+      border-radius: 3rem;
+      border: none;
+      text-transform: uppercase;
+      color: #fff;
+      cursor: pointer;
+      transition: all .2s;
+      outline: none;
+    }
+      .btn__search {
+        background-image: linear-gradient(to right bottom, rgb(250, 252, 137), rgb(248, 130, 122)); }
+      .btn__reset {
+        background-image: linear-gradient(to right bottom, rgb(43, 255, 0), rgb(46, 179, 6));
+        margin-left: -40%;
+      }
+        .btn__search ion-icon {
+          padding-right: 0.3rem; 
+          fill: currentColor; 
+        }
+          .btn__search:hover, .btn__reset:hover { transform: scale(1.05); }
+          .btn__search:active, .btn__reset:active { transform: translateY(0.2rem); }
+        
+      .movie-fav {
+        position: relative;
+        align-self: stretch;
+      }
+        .fav__search {
+          cursor: pointer;
+          padding: 0 3rem;
+          transform: translate(-50%, 15%);
+          display: flex;
+          align-items: center;
+          height: 80%;
+          transition: all .3s; 
+          visibility: hidden;
+        }
+          .fav__search:hover { background-color: rgba(83, 83, 83, 0.719); }
+          .fav__search ion-icon {
+            font-size: 4rem;
+            color: rgb(253, 54, 54);
+          }
+
+          .fav__panel {
+            position: absolute;
+            right: -.65rem;
+            top: 10rem;
+            z-index: 10;
+            padding: 1.5rem 0;
+            width: 27vw;
+            background-color: rgb(243, 243, 243);
+            visibility: hidden;
+            opacity: 0;
+            transition: all .3s .2s; 
+          }
+            .fav__panel:hover, .fav__search:hover + .fav__panel {
+              visibility: visible;
+              opacity: 1; 
+            }
+
+            .fav__list { 
+              display: grid; 
+              grid-template-rows: auto;
+              grid-row-gap: 1rem;
+            }
+              .fav__link { 
+                display: grid; 
+                grid-template-columns: 1fr 2fr;
+                grid-template-areas: "img title";
+                align-items: center;
+              }
+              .fav__link:link,
+              .fav__link:visited {
+                padding: .4rem 0;
+                border-left: 0.3rem solid rgb(194, 194, 194);
+                text-decoration: none; 
+                color: #000;
+                transition: all .3s;
+              }
+              .fav__link:hover {
+                background-color: rgba(194, 194, 194, 0.616);
+                transform: translateY(-0.2rem); 
+              }
+              .fav__link:active { 
+                background-color: rgb(177, 177, 177); 
+                border-left: 0.3rem solid rgb(177, 177, 177);
+              }
+              .fav__photo {
+                border-radius: 50%;
+                overflow: hidden;
+                height: 5.5rem;
+                width: 5.5rem;
+                margin: 0 1rem;
+                position: relative;
+              }
+                .fav__photo::before {
+                  content: '';
+                  position: absolute;
+                  height: 100%;
+                  width: 100%;
+                  background-image: linear-gradient(to right bottom, rgb(216, 216, 216), rgb(150, 150, 150));
+                  opacity: .5;
+                  transition: opacity .3s; 
+                }
+                .fav__link:hover .fav__photo::before {
+                  opacity: 0;
+                }
+
+                .fav__photo img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  transition: all .3s; 
+                }
+                
+              .likes__name {
+                font-size: 1.3rem;
+                color: #F59A83;
+                text-transform: uppercase;
+                font-weight: 600;
+                margin-bottom: .3rem; 
+              }
+
+/************************************/
+/*******    Movie app bottom  *******/
+/************************************/
+
+  .movie-box {
+    width: 76vw;
+    height: 100vh;
+    min-height: 65rem;
+    margin: 0 auto;
+    background-color: rgba(153, 153, 153, 0.295);
+    box-shadow: 0 0.5rem 2rem rgba(255, 255, 255, 0.514);
+  }
+    .movie-result {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: 
+        "photo title rating" 
+        "photo genre ageTime"
+        "photo production .";
+      align-items: center;
+    }
+      .movie__photo {
+        grid-area: photo;
+        justify-self: end;
+        width: 15vw;
+        height: 32.5rem;
+      }
+      .movie__title {
+        padding: 0 3rem;
+        justify-self: center;
+        font-size: 2.9rem;
+        word-spacing: 0.3rem;
+        letter-spacing: .1rem;
+      }
+        .movie__title a:link,
+        .movie__title a:visited { 
+          color: rgb(255, 255, 255);
+          text-decoration: none;
+          transition: all .3s;
+          border-bottom: 0.1rem solid transparent;
+          padding-bottom: 0.8rem;
+        }
+        .movie__title a:hover,
+        .movie__title a:active {
+          color: rgb(214, 214, 214);
+          font-size: 3rem;
+          border-bottom: 0.1rem solid rgb(114, 114, 114);
+        }
+
+      .movie__rating {
+        font-size: 2rem;
+        color: rgb(197, 197, 197);
+        display: grid;
+        grid-template-columns: .1fr 1fr;
+        align-items: center;
+      }
+        .movie__rating ion-icon:first-of-type { 
+          grid-column: 1/2; 
+          font-size: 3rem;
+        }
+        .movie__rating ion-icon:last-of-type {
+          margin-right: 0.5rem;
+          font-size: 1.8rem;
+        }
+          .yellow-movieBtn { color: rgb(247, 226, 39); }
+          .red-movieBtn { color: rgb(241, 67, 44); }
+
+      .movie__fav-icon {
+        grid-column: 4/6; 
+        background-image: linear-gradient(to right bottom, rgb(114, 105, 82), rgb(209, 186, 108));
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        height: 4.5rem;
+        width: 4.5rem;
+        margin-right: 5vw;
+        padding-bottom: 0;
+        transition: all .2s;
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        outline: none;
+      }
+        .movie__fav {
+          height: 2.75rem;
+          width: 2.75rem;
+          margin-left: .4rem;
+          fill: #fff; 
+          transition: transform .2s;
+        }
+
+      .movie__genre, .movie__ageTime, .movie__production { color: rgb(214, 214, 214); }
+        .movie__genre { 
+          font-size: 2rem;
+          margin-bottom: 10%;
+          justify-self: center; 
+        }
+        .movie__ageTime { 
+          margin-top: 10%;
+          font-size: 1.6rem; 
+        }
+      .movie__production {
+        justify-self: center; 
+        align-self: start; 
+        font-size: 1.8rem; 
+      }
+
+/************************************/
+/*****    Media for Movie app   *****/
+/*************************************/
+
+  @media only screen and (max-width: 1316px) {
+    .movie__title { font-size: 2.4rem; }
+    .movie__title a:hover, .movie__title a:active { font-size: 2.5rem; } 
+      .btn-movie {
+        font-size: 1.1rem;
+        width: 45%;
+        height: 19%;
+      }
+  } 
+
+  @media only screen and (max-width: 1190px) {
+      .btn-movie {
+        font-size: 0.95rem;
+        width: 45%;
+        height: 15%;
+      }
+    .movie-result {
+      grid-template-columns: 1fr 1.3fr;
+      grid-template-areas: 
+        "photo title" 
+        "photo rating" 
+        "photo genre"
+        "photo ageTime"
+        "photo production";
+    }
+      .movie__title { 
+        justify-self: center;
+        align-self: end;
+        font-size: 2.1rem; 
+      }
+      .movie__genre, .movie__rating, .movie__ageTime, .movie__production {
+        justify-self: center;
+        align-self: start;
+        font-size: 1.4rem;
+        margin-bottom: 0;
+      }
+        .movie__fav-icon { margin: 4vh 0;}
+        .movie__rating ion-icon:last-of-type { grid-column: 3/4; }
+      .movie__title a:hover, .movie__title a:active { font-size: 2.15rem; } 
+  } 
+
+  @media only screen and (max-width: 900px) {
+    .movie__photo { width: 20vw; }
+    .btn-movie { 
+      padding-right: 0.3rem;
+        font-size: 0.95rem;
+        height: 15%;
+        width: 55%;
+        margin-right: -20%;
+        margin-left: 2rem;
+    }
+    .search-field {
+      font-size: 1.2rem;
+      padding-left: 1rem;
+      height: 20%;
+      width: 65%;
+    }
+      .search-field:focus { font-size: 1.3rem; }
+    .plot__search {
+      height: 15%;
+      padding-left: 0.1rem;
+      margin-top: 5%;
+      font-size: .9rem;
+    }
+    .fav__search {
+      padding: 0 2rem;
+      height: 50%;
+      transform: translate(10%, 50%);
+    }
+  }
+
+  @media only screen and (max-width: 720px) {
+    .movie__photo { width: 30vw; }
+    .search-field {
+      font-size: 1.1rem;
+      padding-left: .5rem;
+    }
+      .search-field:focus { font-size: 1.2rem; }
+    .plot__search {
+      width: 6rem;
+      padding-left: 0.3rem;
+      margin-top: 5%;
+      font-size: 1.1rem;
+    }
+  }
+
+
+.loader {
+  overflow: hidden;
+  margin: 10vw auto;
+  border: 1.6rem solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 1.6rem solid #93b5ff;
+  width: 12rem;
+  height: 12rem;
+  animation: spin 2s linear infinite;
+}
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+/****************************************************/
+/*****    Movie app cd, after clicking title   *****/
+/****************************************************/
+
+.movie-detail {
+  display: flex;
+}
+  .movie-detail-container {
+    display: flex;
+    flex-direction: column;
+    margin: .5rem 1.5rem 0 .5rem;
+  }
+    .movie-detail__intro {
+      color: #fff;
+      text-align: center;
+      font-size: 2.3rem;
+    }
+    .movie-detail__date { 
+      display: flex; 
+      justify-content: space-evenly;
+    }
+      .movie-detail__calendar, .movie-detail__time {
+        display: flex;
+        margin: 1rem 0;
+        color: #fff;
+        font-size: 1.9rem;
+        text-align: center;
+      }
+      .movie-detail__calendar ion-icon, .movie-detail__time ion-icon {
+        font-size: 5rem;
+        align-self: center;
+        margin-right: 1rem;
+      }
+    .movie-detail__descr {
+      color: rgb(240, 236, 236);
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .movie-detail__title, .movie-detail__genre, .movie-detail__actors, .movie-detail__director, 
+    .movie-detail__awards, .movie-detail__age {
+      display: flex;
+      color: #fff;
+      font-size: 1.4rem;
+      padding: .8rem 0;
+      border-top: 0.1rem solid rgb(175, 175, 175);
+    }
+    .movie-detail__age:last-of-type { border-bottom: 0.1rem solid rgb(175, 175, 175); }
+
+    .movie-detail__title p:first-of-type, .movie-detail__genre p:first-of-type,
+    .movie-detail__actors p:first-of-type, .movie-detail__director p:first-of-type, 
+    .movie-detail__awards p:first-of-type, .movie-detail__age p:first-of-type { 
+      margin-right: 2rem;
+      text-transform: uppercase;
+    }
+
+  .movie-detail-rigth { margin: auto .5rem; }
+    .movie-detail__like {
+      background-image: linear-gradient(to right bottom, rgb(114, 105, 82), rgb(209, 186, 108));
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      height: 4.5rem;
+      width: 4.5rem;
+      margin: 2rem auto;
+      padding-bottom: 0;
+      transition: all .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+      outline: none;
+    }
+      .movie-detail__like ion-icon {
+        margin-right: 0.5rem;
+        font-size: 1.8rem;
+      }
+    .movie-detail__return { 
+      margin-top: 2rem;
+      text-align: center; 
+      font-size: 2rem;
+    }
+      .movie-detail__return ion-icon { 
+        vertical-align: middle;
+        margin-bottom: .4rem;
+        color: rgb(207, 225, 245);
+      }
+      .movie-detail__return a { 
+        text-decoration: none; 
+        text-transform: uppercase;
+        color: rgb(255, 255, 255);
+      }
+
+        .movie-detail__like:hover .movie__fav, .movie__fav-icon:hover .movie__fav { 
+          transform: scale(1.07); }
+        .movie-detail__like:active .movie__fav, .movie__fav-icon:active .movie__fav { 
+          transform: translateY(0.2rem); }
+      
+/***********************/
+/**    Shop intro     **/
+/***********************/
+/*************************/
+/**    Recipe intro     **/
+/*************************/
+
+.shop-intro, .react-intro {
+  height: 100vh;
+  min-height: auto;
+  background-color: #fff; 
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+}
+.react-intro { 
+  background-color: rgb(245, 245, 245);
+  grid-template-columns: none;  
+  grid-template-rows: 20vh 80vh;
+  justify-items: center;
+  align-items: center;
+}
+  .react-title {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+    .react-title h2 {
+    grid-column: 1/4;
+    text-align: center;
+    padding-bottom: 2rem;
+    }
+      .react-border {
+        grid-column: 2/3;
+        border-bottom: 0.2rem solid rgb(223, 190, 4);
+      }
+  .react-intro .intro-description ion-icon { margin-bottom: 2rem; }
+    .react-intro .intro-description p a {
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+      font-weight: 700;
+    }
+
+  .shop-intro .intro-title {
+    width: 100%;
+    margin: -4vh auto;
+    overflow: hidden;
+    grid-column: 1/5;
+    grid-template-columns: 1fr 2fr 1fr 2fr 1fr;
+  }
+    .shop-intro .intro-title h2 { 
+      width: 100%;
+      margin-bottom: -6vh;
+      grid-column: 2/5; 
+    }
+      .shop-intro .intro-title .border { grid-column: 3/4; }
+
+@media only screen and (max-width: 475px) {
+  .shop-intro { grid-template-rows: 50vh 50vh; }
+    .shop-intro .intro-title  {
+      width: 100%;
+      margin: 0;
+      overflow: none;
+      grid-template-columns: 0;
+    }
+}
+
+/***********************/
+/**    Shop app      **/
+/***********************/
+
+
+.shop {
+  height: 100vh;
+  min-height: 65rem;
+}
+  .shop__header {
+    height: 27‬rem;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)) ,url(img/shop.png);
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+    .shop__header h2 {
+      padding-top: 1rem;
+      color: rgb(241, 241, 241);
+    }
+    .shop__header__plan,
+    .shop__header__spend {
+      padding: 1.2rem;
+      width: 35rem;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      padding-left: 2rem;
+      display: flex;
+    }
+    .shop__header__plan { background-color: rgb(81, 255, 0); }
+    .shop__header__spend { background-color: rgb(217, 255, 0); }
+      .final__value,
+      .after__value { margin-left: auto; }
+
+  .shop__input {
+    background-color: rgb(175, 175, 175);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+  }
+    .add__product {
+      width: 8rem;
+      height: 3rem;
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      font-weight: 300;
+      border: 1px solid rgb(114, 114, 114);
+    }
+    .change__icon img {
+      width: 5rem;
+      height: 4rem;
+    }
+    .add__name,
+    .add__value {
+      font-size: 1.5rem;
+      padding: 0.6rem 1rem;
+      margin-left: 1rem;
+      border-radius: 0.5rem;
+      text-transform: capitalize;
+    }
+    .add__name { width: 40rem; }
+    .add__value { width: 10rem; }
+    .add__btn {
+      margin-left: 1rem;
+      background: none;
+      border: none;
+      transition: transform 0.2s, color 0.2s;
+    }
+      .add__btn:hover {
+        transform: scale(1.08);
+        color: rgb(44, 150, 53);
+        cursor: pointer;
+      }
+        .add__btn:hover.red { color: rgb(146, 5, 5); }
+        .add__btn:active { transform: translateY(2px); }
+        .add__btn ion-icon {
+          font-size: 35px;
+          line-height: 1.1;
+        }
+
+        .green { color: rgb(0, 180, 15); }
+        .red { color: rgb(255, 0, 0); }
+        .yellow { color: rgb(167, 179, 0); }
+
+/*********************************************/
+/*****          Shop app bottom          *****/
+/*********************************************/
+
+.shop__list {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  overflow: hidden;
+}
+  .shop__list__el { 
+    flex: 0 1 30%; 
+    margin: 0 auto; 
+  }
+  .shop__list__el,
+  .shop__list__done {
+    display: flex;
+    flex-direction: column;
+  }
+    .shop__list__el-intro,
+    .shop__list__done-intro {
+      text-transform: none;
+      font-size: 3rem;
+      text-align: center;
+      color: rgb(123, 148, 77);
+      visibility: hidden;
+    }
+    .shop__list__done > h2 {
+      font-size: 2.6rem;
+      color: rgb(148, 135, 77);
+      margin: .5rem 0;
+    }
+    @media only screen and (max-width: 705px) {
+      .shop__list__el > h2 { font-size: 2.8rem; }
+      .shop__list__done > h2 { font-size: 2.2rem; }
+    }
+
+.shop__list__el__new,
+.shop__list__done__new {
+  min-height: 10rem;
+  box-shadow: 1rem 1rem 1rem 0.5rem rgba(0,0,0,.2);
+  margin: 1rem 0;
+
+  display: flex;
+}
+
+.shop__list__el__new:nth-child(even),
+.shop__list__done__new:nth-child(even) { background-color: #fcfcfc; }
+
+.shop__photo {
+  flex: 1;
+  align-self: center;
+}
+
+.shop__photo img { 
+  width: 100%;
+  max-height: 12rem; 
+  border-radius: 1rem;
+}
+
+.shop__list__done__new .shop__photo img { max-height: 11rem; } 
+
+.shop__item {
+  flex: 1;
+  margin-bottom: .5rem;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-transform: capitalize;
+
+  display: flex;
+  align-items: center;
+}
+
+.shop__title {
+  margin: 0 auto;
+}
+
+.move__btn ,
+.remove__btn {
+  margin: auto 6% 1% 0;
+  border: none;
+  background: none;
+  font-size: 2.2rem;
+}
+  .remove__btn { margin-right: .4rem; }
+
+.move__btn ion-icon,
+.remove__btn ion-icon { transition: transform 0.2s; }
+
+.move__btn ion-icon:hover,
+.remove__btn ion-icon:hover {
+  transform: scale(1.15);
+  cursor: pointer;
+}
+
+.move__btn ion-icon:active,
+.remove__btn ion-icon:active {
+  transform: translateY(2px);
+}
+
+.shop__cash {
+  flex: 0 1 5rem;
+  background-color: rgb(5, 255, 255);
+  writing-mode: vertical-lr;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+
+  display: flex;
+}
+
+.shop__cash p { margin: auto; }
+
+.shop__list__done {
+  flex: 0 1 25%;
+  align-self: flex-start;
+  margin: 0 auto; 
+}
+
+.shop__list__done__new .shop__item, .shop__list__done__new .move__btn,
+.shop__list__done__new .remove__btn { font-size: 1.65rem; }
+.shop__list__done__new .shop__cash { font-size: 1.3rem; }
+
